@@ -8,9 +8,9 @@ import requests
 
 def get_weather():
 	#collecting data from servers-----------------------------------------------------------------------
-	conn1 = requests.get("https://api.thingspeak.com/channels/996153/feeds.json?results=1")
+	conn1 = requests.get("https://api.thingspeak.com/channels/CHANNELID/feeds.json?results=1")
 	dataset = conn1.json()
-	conn2 = requests.get('http://api.openweathermap.org/data/2.5/weather?id=5391710&appid=d5b15bf763882299bb83888593990b8d&units=imperial')
+	conn2 = requests.get('http://api.openweathermap.org/data/2.5/weather?id=WEATHERID&units=imperial')
 	dataset2 = conn2.json()
 	#Thingspeak data -----------------------------------------------------------------------------------
 	real_temp=(dataset['feeds'][0]['field1'])
@@ -47,7 +47,7 @@ def update_weather():
 	
 	
 def report_accuracy():
-	api_key='GUO6WFSLJ79K2XJR'
+	api_key='APIKEY'
 	x=float(get_weather()[3])
 	payload = {'api_key': api_key, 'field1': x}
 	requests.post('https://api.thingspeak.com/update', params=payload)
@@ -60,7 +60,7 @@ root = tk.Tk()
 HEIGHT= 700
 WIDTH= 800
 
-#root.wm_attributes('-fullscreen','true')
+root.wm_attributes('-fullscreen','true')
 #HEIGHT= root.winfo_screenheight()
 #WIDTH= root.winfo_screenwidth()
 
