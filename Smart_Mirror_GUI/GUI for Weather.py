@@ -98,9 +98,11 @@ title3.place(relx=.75,rely=0.24,width=300,)
 accuracy=tk.Label(frame, text=get_weather()[2],fg="white", bg="black",font=("Times",15))
 accuracy.place(relx=.79,rely=0.28,relwidth=.2,)
 
+#Data is hard set temporarily
 title4=tk.Label(frame, text='Hourly: 88.56%',fg="white", bg="black",font=("Times",15))
 title4.place(relx=.75,rely=0.32,width=300,)
 
+#Data is hard set temporarily
 title5=tk.Label(frame, text='Daily: 91.98%',fg="white", bg="black",font=("Times",15))
 title5.place(relx=.75,rely=0.36,width=300,)
 
