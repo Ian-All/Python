@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Wed Mar  4 19:10:19 2020
 
@@ -471,31 +470,8 @@ def ordered_moves(playername, board):
     return (sorted(holdlist,key=lambda x:x[0]))
     
 
-#def algorithm(playername,board):
-#    player1 = playername
-#    player2 = ''
-#    if player1 =='X':
-#        player2 = 'O'
-#    else:
-#        player2 = 'X'
-#    
-#    og_set = ordered_moves(playername, board)
-#    
-#    player1_total= 0
-#    player2_total= 0
-#    
-#    player1_best_move=[]
-#
-#    for i in og_set:
-#        board1 = capture(playername,board,i[0],i[2])
-#        if check_score(player1, board1) > player1_total:
-#            player1_total = check_score(player1, board1)
-#            player2_total= check_score(player2, board1)
-#            player1_best_move = [i]
-#                
 
-
-#big boi algorithm
+#Minimax Algorithm
 def minimax(playername,board,depth,maximizing): 
     moves = ordered_moves(playername,board)
     if depth == 0:
@@ -526,31 +502,17 @@ def minimax(playername,board,depth,maximizing):
         return value, solution
     
     return value, solution
-
-    
-
-#print(minimax(player,board_state,depth,1))
     
 
 new_cap = minimax(player,board_state,depth,1)
 alphabet_string = string.ascii_uppercase
 alphabet_list = list(alphabet_string)
-#print(alphabet_list)
-#print(new_cap[1][0])
-#print(new_cap[1][2])
-#print(player)
 
 cindex=new_cap[1][0]
 ctype=new_cap[1][2]
-
 new_board= capture(player, board_state,int(cindex) , ctype)
-
-#print(new_board)
-    
-
 lindex = cindex % size
 letter = alphabet_list[lindex]
-
 height = int(cindex / size) + 1
 
 label = ''
@@ -560,8 +522,6 @@ else:
     label = 'Raid'
 
 header = str(letter)+str(height)+' '+label+'\n'
-
-
 file1 = open("output.txt","w")
 
 def divide_chunks(l, n): 
@@ -569,7 +529,6 @@ def divide_chunks(l, n):
         yield l[i:i + n] 
   
 x = list(divide_chunks(new_board, size)) 
-
 thestring=''
 
 file1.write(header)
